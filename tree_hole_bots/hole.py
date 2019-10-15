@@ -16,16 +16,19 @@ lid = 0
 h2t = html2text.HTML2Text()
 h2t.ignore_links = True
 
+with open("THUOCL_animal.txt",'r') as x:
+    names = x.readlines()
+
 while True:
     r = th.conversations(since_id=lid);
 
-    for conv in r:
+    for conv in r[::-1]:
         if conv.unread:
             text = conv.last_status.content
-            pt = h2t.handle(text)
+            pt = h2t.handle(text).lstrip()
 
-            rid = random.randint(10000000,99999999)
-            th.status_post(hex(rid) + ":\n" + pt)
+            rid = random.randint(0,len(names)-1)
+            th.status_post(names[rid].split()[0] + ":\n" + pt)
             th.conversations_read(conv.id)
         lid = max(lid,conv.id);
     print(lid)
