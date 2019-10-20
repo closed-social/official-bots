@@ -2,7 +2,7 @@ from mastodon import Mastodon
 from numpy import random
 import html2text
 import time
-import pprint
+#import pprint
 
 MAX_SEND = -1
 REC_TIME = 600
@@ -41,7 +41,7 @@ recs = {}
 h2t = html2text.HTML2Text()
 h2t.ignore_links = True
 
-pp = pprint.PrettyPrinter(indent=4)
+#pp = pprint.PrettyPrinter(indent=4)
 
 with open("namelist",'r') as x:
     names = x.readlines()
@@ -50,10 +50,10 @@ while True:
     r = th.conversations(min_id=lid);
     
     for conv in r[::-1]:
-        print(conv.last_status.id,conv.unread, conv.last_status.account.acct)
+        #print(conv.last_status.id,conv.unread, conv.last_status.account.acct)
         if conv.unread:
             
-            pp.pprint(conv);
+            #pp.pprint(conv);
             name = conv.last_status.account.acct
             if '@' in name:
                 PM('树洞只允许在本站使用 @'+name)
