@@ -4,7 +4,7 @@ import pprint
 import time
 
 DOMAIN   = 'thu.closed.social'
-THRESHOLD = 5
+THRESHOLD = 7
 
 
 def POST(msg):
